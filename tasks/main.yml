@@ -1,11 +1,17 @@
 ---
 - name: install fail2ban for Debian
-  apt: pkg=fail2ban state={{ fail2ban_pkg_state }}
+  apt:
+    state: "{{ fail2ban_pkg_state }}"
+    pkg:
+      - fail2ban
   when: ansible_os_family == 'Debian'
   tags: package
 
 - name: install fail2ban for RedHat
-  yum: name=fail2ban state={{ fail2ban_pkg_state }}
+  yum:
+    state: "{{ fail2ban_pkg_state }}"
+    pkg:
+      - fail2ban
   when: ansible_os_family == 'RedHat'
   tags: package
 
